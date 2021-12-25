@@ -1,24 +1,39 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import * as React from "react";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import SignUpScreen from "./src/screens/SignUpScreen/SignUpScreen";
+import SignInScreen from "./src/screens/SignInScreen/SignInScreen";
+import SignUpInfoScreen from "./src/screens/SignUpInfoScreen/SignUpInfoScreen";
 
 export default function App() {
+	const Stack = createNativeStackNavigator();
+
 	return (
 		<Provider store={store}>
-			<View style={{ flex: 1 }}>
-				<Text>Open up App.js to start working on your app!</Text>
-				<StatusBar translucent={false} backgroundColor="#FFFF00BB" />
-			</View>
+			<NavigationContainer>
+				<SafeAreaProvider>
+					<Stack.Navigator initialRouteName="SignUpInfoScreen">
+						<Stack.Screen
+							name="SignUpScreen"
+							component={SignUpScreen}
+							options={{ headerShown: false }}
+						/>
+						<Stack.Screen
+							name="SignInScreen"
+							component={SignInScreen}
+							options={{ headerShown: false }}
+						/>
+						<Stack.Screen
+							name="SignUpInfoScreen"
+							component={SignUpInfoScreen}
+							options={{ headerShown: false }}
+						/>
+					</Stack.Navigator>
+				</SafeAreaProvider>
+			</NavigationContainer>
 		</Provider>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-});
