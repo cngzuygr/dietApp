@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { store } from "../../../store";
 import GenderCard from "../../components/GenderCard";
 import HeightCard from "../../components/HeightCard";
+import AgeCard from "../../components/AgeCard";
 
 const SignUpInfoScreen = () => {
 	const Stack = createNativeStackNavigator();
@@ -27,6 +28,12 @@ const SignUpInfoScreen = () => {
 							component={HeightCard}
 							options={{ headerShown: false }}
 							key={2}
+						/>
+						<Stack.Screen
+							name="AgeCard"
+							component={AgeCard}
+							options={{ headerShown: false }}
+							key={3}
 						/>
 					</Stack.Navigator>
 				</SafeAreaProvider>

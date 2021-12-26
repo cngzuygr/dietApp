@@ -132,6 +132,7 @@ const SignUpScreen = () => {
 						justifyContent: "center",
 					}}
 					disabled={selected}
+					onPress={() => navigation.navigate("SignUpInfoScreen")}
 				>
 					<Text
 						style={{

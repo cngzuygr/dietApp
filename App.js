@@ -15,7 +15,7 @@ export default function App() {
 		<Provider store={store}>
 			<NavigationContainer>
 				<SafeAreaProvider>
-					<Stack.Navigator initialRouteName="SignUpInfoScreen">
+					<Stack.Navigator initialRouteName="SignUpScreen">
 						<Stack.Screen
 							name="SignUpScreen"
 							component={SignUpScreen}

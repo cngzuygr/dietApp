@@ -1,34 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	gender: null,
-	destination: null,
-	travelTimeInformation: null,
+	genderData: null,
+	heightData: null,
+	weightData: null,
 };
 
 export const navSlice = createSlice({
 	name: "nav",
 	initialState,
-	reducer: {
-		setGender: (state, action) => {
-			state.gender = action.payload;
+	reducers: {
+		setGenderData: (state, action) => {
+			state.genderData = action.payload;
 		},
-		setDestination: (state, action) => {
-			state.destination = action.payload;
+		setHeightData: (state, action) => {
+			state.heightData = action.payload;
 		},
-		setTravelTimeInformation: (state, action) => {
-			state.travelTimeInformation = action.payload;
+		setWeightData: (state, action) => {
+			state.weightData = action.payload;
 		},
 	},
 });
 
-export const { setGender, setDestination, setTravelTimeInformation } =
-	navSlice.actions;
+export const { setGenderData, setHeightData, setWeightData } = navSlice.actions;
 
 //Selectors
-export const selectGender = (state) => state.nav.gender;
-export const selectDestination = (state) => state.nav.destination;
-export const selectTravelTimeInformation = (state) =>
-	state.nav.travelTimeInformation;
+export const selectGenderData = (state) => state.nav.genderData;
+export const selectHeightData = (state) => state.nav.heightData;
+export const selectWeightData = (state) => state.nav.weightData;
 
 export default navSlice.reducer;
