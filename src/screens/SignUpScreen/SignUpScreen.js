@@ -33,14 +33,7 @@ const SignUpScreen = () => {
 					<Progress.Bar
 						style={styles.progressBar}
 						progress={1}
-						width={100}
-						color="#8883f0"
-						borderWidth={0.3}
-					/>
-					<Progress.Bar
-						style={styles.progressBar}
-						progress={0}
-						width={100}
+						width={200}
 						color="#8883f0"
 						borderWidth={0.3}
 					/>

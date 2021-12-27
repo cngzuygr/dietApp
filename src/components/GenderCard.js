@@ -31,7 +31,7 @@ const GenderCard = () => {
 			<ScrollView>
 				<Progress.Bar
 					style={{ alignSelf: "center", marginTop: 50 }}
-					progress={0.2}
+					progress={0.25}
 					width={250}
 					color="#8883f0"
 					borderWidth={0.7}

@@ -56,7 +56,7 @@ const HeightCard = () => {
 			<ScrollView>
 				<Progress.Bar
 					style={{ alignSelf: "center", marginTop: 50 }}
-					progress={0.4}
+					progress={0.5}
 					width={250}
 					color="#8883f0"
 					borderWidth={0.7}
@@ -72,24 +72,6 @@ const HeightCard = () => {
 					<Text style={{ fontSize: 24, color: "#a4a2ac", alignSelf: "center" }}>
 						Your height:
 					</Text>
-					<Slider
-						style={{
-							width: "80%",
-							height: 60,
-							alignSelf: "center",
-						}}
-						value={height}
-						step={1}
-						minimumValue={130}
-						maximumValue={220}
-						minimumTrackTintColor="#8883f0"
-						maximumTrackTintColor="#8883f0"
-						thumbTintColor="#8883f0"
-						onValueChange={(value) => {
-							setHeight(value);
-						}}
-					/>
-
 					{height != null ? (
 						<View style={{ flexDirection: "row", justifyContent: "center" }}>
 							<Text
@@ -130,28 +112,27 @@ const HeightCard = () => {
 							</View>
 						</View>
 					) : null}
-
-					<Text style={{ fontSize: 24, color: "#a4a2ac", alignSelf: "center" }}>
-						Your weight:
-					</Text>
 					<Slider
 						style={{
 							width: "80%",
 							height: 60,
 							alignSelf: "center",
 						}}
-						value={weight}
+						value={height}
 						step={1}
-						minimumValue={0}
-						maximumValue={300}
+						minimumValue={130}
+						maximumValue={220}
 						minimumTrackTintColor="#8883f0"
 						maximumTrackTintColor="#8883f0"
 						thumbTintColor="#8883f0"
 						onValueChange={(value) => {
-							setWeight(value);
+							setHeight(value);
 						}}
 					/>
 
+					<Text style={{ fontSize: 24, color: "#a4a2ac", alignSelf: "center" }}>
+						Your weight:
+					</Text>
 					{weight != null ? (
 						<View style={{ flexDirection: "row", justifyContent: "center" }}>
 							<Text
@@ -192,6 +173,23 @@ const HeightCard = () => {
 							</View>
 						</View>
 					) : null}
+					<Slider
+						style={{
+							width: "80%",
+							height: 60,
+							alignSelf: "center",
+						}}
+						value={weight}
+						step={1}
+						minimumValue={0}
+						maximumValue={300}
+						minimumTrackTintColor="#8883f0"
+						maximumTrackTintColor="#8883f0"
+						thumbTintColor="#8883f0"
+						onValueChange={(value) => {
+							setWeight(value);
+						}}
+					/>
 
 					<TouchableOpacity
 						style={{

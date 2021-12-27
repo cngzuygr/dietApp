@@ -8,15 +8,23 @@ import { store } from "../../../store";
 import GenderCard from "../../components/GenderCard";
 import HeightCard from "../../components/HeightCard";
 import AgeCard from "../../components/AgeCard";
+import ActivityCard from "../../components/ActivityCard";
+import HomeScreen from "../HomeScreen/HomeScreen";
 
 const SignUpInfoScreen = () => {
 	const Stack = createNativeStackNavigator();
+
+	const navigation = useNavigation();
+
+	const goToHomeScreen = () => {
+		navigation.navigate("HomeScreen");
+	};
 
 	return (
 		<Provider store={store}>
 			<NavigationContainer independent={true}>
 				<SafeAreaProvider style={{ justifyContent: "center", flex: 1 }}>
-					<Stack.Navigator>
+					<Stack.Navigator initialRouteName="GenderCard">
 						<Stack.Screen
 							name="GenderCard"
 							component={GenderCard}
@@ -34,6 +42,18 @@ const SignUpInfoScreen = () => {
 							component={AgeCard}
 							options={{ headerShown: false }}
 							key={3}
+						/>
+						<Stack.Screen
+							name="ActivityCard"
+							component={ActivityCard}
+							options={{ headerShown: false }}
+							key={4}
+						/>
+						<Stack.Screen
+							name="HomeScreen"
+							component={HomeScreen}
+							options={{ headerShown: false }}
+							key={4}
 						/>
 					</Stack.Navigator>
 				</SafeAreaProvider>
