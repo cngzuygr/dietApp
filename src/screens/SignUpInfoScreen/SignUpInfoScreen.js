@@ -10,6 +10,7 @@ import HeightCard from "../../components/HeightCard";
 import AgeCard from "../../components/AgeCard";
 import ActivityCard from "../../components/ActivityCard";
 import HomeScreen from "../HomeScreen/HomeScreen";
+import PurposeCard from "../../components/PurposeCard";
 
 const SignUpInfoScreen = () => {
 	const Stack = createNativeStackNavigator();
@@ -24,7 +25,7 @@ const SignUpInfoScreen = () => {
 		<Provider store={store}>
 			<NavigationContainer independent={true}>
 				<SafeAreaProvider style={{ justifyContent: "center", flex: 1 }}>
-					<Stack.Navigator initialRouteName="GenderCard">
+					<Stack.Navigator initialRouteName="PurposeCard">
 						<Stack.Screen
 							name="GenderCard"
 							component={GenderCard}
@@ -46,6 +47,12 @@ const SignUpInfoScreen = () => {
 						<Stack.Screen
 							name="ActivityCard"
 							component={ActivityCard}
+							options={{ headerShown: false }}
+							key={4}
+						/>
+						<Stack.Screen
+							name="PurposeCard"
+							component={PurposeCard}
 							options={{ headerShown: false }}
 							key={4}
 						/>

@@ -8,15 +8,17 @@ import SignUpScreen from "./src/screens/SignUpScreen/SignUpScreen";
 import SignInScreen from "./src/screens/SignInScreen/SignInScreen";
 import SignUpInfoScreen from "./src/screens/SignUpInfoScreen/SignUpInfoScreen";
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
+import { LogBox } from "react-native";
 
 export default function App() {
+	LogBox.ignoreAllLogs(); //Ignore all log notifications
 	const Stack = createNativeStackNavigator();
 
 	return (
 		<Provider store={store}>
 			<NavigationContainer>
 				<SafeAreaProvider>
-					<Stack.Navigator initialRouteName="SignUpScreen">
+					<Stack.Navigator initialRouteName="SignUpInfoScreen">
 						<Stack.Screen
 							name="SignUpScreen"
 							component={SignUpScreen}

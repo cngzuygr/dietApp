@@ -12,15 +12,54 @@ import { StatusBar } from "expo-status-bar";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
+import { db, auth } from "../../../firebase";
 
 const SignUpScreen = () => {
 	const navigation = useNavigation();
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
 	const ScrollView1 = useRef();
 
 	const selected = name == "" || email == "" || password.length < 6;
+
+	const createUser = async () => {
+		await db
+			.collection("users")
+			.doc(auth?.currentUser?.uid)
+			.set({
+				displayName: name,
+				userEmail: email,
+				gender: null,
+				age: null,
+				height: null,
+				weight: null,
+				activity: null,
+				purpose: null,
+			})
+			.catch((error) => alert(error))
+			/*.then(() => {
+				auth?.currentUser?.sendEmailVerification();
+			})*/
+			.then(() => {
+				navigation.navigate("SignUpInfoScreen");
+			});
+	};
+
+	const register = () => {
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then((authUser) => {
+				authUser.user.updateProfile({
+					displayName: name,
+				});
+			})
+			.then(() => {
+				createUser();
+			})
+			.catch((error) => alert(error.message));
+	};
 
 	useEffect(() => {
 		ScrollView1.current?.scrollToEnd();
@@ -125,7 +164,7 @@ const SignUpScreen = () => {
 						justifyContent: "center",
 					}}
 					disabled={selected}
-					onPress={() => navigation.navigate("SignUpInfoScreen")}
+					onPress={() => register()}
 				>
 					<Text
 						style={{

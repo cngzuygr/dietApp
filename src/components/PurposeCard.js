@@ -11,44 +11,35 @@ import * as Progress from "react-native-progress";
 import { StatusBar } from "expo-status-bar";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { setActivityData } from "../../slices/navSlice";
+import { setPurposeData } from "../../slices/navSlice";
 import { useDispatch } from "react-redux";
-const ActivityCard = () => {
+const PurposeCard = () => {
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
 	const [selected, setSelected] = useState(false);
-	const [activitySelected, setActivitySelected] = useState(null);
+	const [purposeSelected, setPurposeSelected] = useState(null);
 
-	const activity = [
+	const purpose = [
 		{
 			key: 1,
-			title: "Sedentary Lifestyle",
-			subTitle: "Little or no exercise",
-			exerciseMultiplier: 1.2,
+			title: "Lose Weight",
+			subTitle: "500 - 1000 less cal. per day",
+			purpose1: -500,
+			purpose2: -1000,
 		},
 		{
 			key: 2,
-			title: "Slightly Active",
-			subTitle: "Exercise 1-3 times a week",
-			exerciseMultiplier: 1.375,
+			title: "Maintain Weight",
+			subTitle: "Your daily cal. need",
+			purpose1: 0,
+			purpose2: 0,
 		},
 		{
 			key: 3,
-			title: "Moderately Active",
-			subTitle: "Exercise 4-5 times a week",
-			exerciseMultiplier: 1.55,
-		},
-		{
-			key: 4,
-			title: "Active Lifestyle",
-			subTitle: "Exercise 6-7 times a week",
-			exerciseMultiplier: 1.725,
-		},
-		{
-			key: 5,
-			title: "Very Active Lifestyle",
-			subTitle: "Very intense exercise daily or physical job",
-			exerciseMultiplier: 1.9,
+			title: "Gain Weight",
+			subTitle: "500 - 1000 more cal. per day",
+			purpose1: 500,
+			purpose2: 1000,
 		},
 	];
 
@@ -71,53 +62,46 @@ const ActivityCard = () => {
 					}}
 				>
 					<Text style={{ fontSize: 24, color: "#a4a2ac", alignSelf: "center" }}>
-						Activity Information:
+						What is your purpose:
 					</Text>
 
-					{activity.map(({ title, subTitle, key, exerciseMultiplier }) => (
-						<TouchableOpacity
-							style={{
-								alignItems: "center",
-								width: "80%",
-								alignSelf: "center",
-								borderWidth: 0.5,
-								borderRadius: 10,
-								marginTop: 10,
-								height: 60,
-								justifyContent: "center",
-								borderColor: "#8883f0",
-								backgroundColor: `${
-									activitySelected?.key == key ? "#8883f0" : "white"
-								}`,
-							}}
-							onPress={() =>
-								setActivitySelected({
-									key: key,
-									title: title,
-									subTitle: subTitle,
-									exerciseMultiplier: exerciseMultiplier,
-								})
-							}
-							key={key}
-						>
-							<Text
+					{purpose.map(({ title, subTitle, key, purpose1, purpose2 }) => (
+						<View>
+							<TouchableOpacity
 								style={{
-									fontWeight: "bold",
-									color: `${
-										activitySelected?.key == key ? "white" : "#8883f0"
+									alignItems: "center",
+									width: "80%",
+									alignSelf: "center",
+									borderWidth: 0.5,
+									borderRadius: 10,
+									marginTop: 10,
+									height: 60,
+									justifyContent: "center",
+									borderColor: "#8883f0",
+									backgroundColor: `${
+										purposeSelected?.key == key ? "#8883f0" : "white"
 									}`,
 								}}
+								onPress={() =>
+									setPurposeSelected({
+										key: key,
+										title: title,
+									})
+								}
+								key={key}
 							>
-								{title.toUpperCase()}
-							</Text>
-							<Text
-								style={{
-									color: `${activitySelected?.key == key ? "white" : "gray"}`,
-								}}
-							>
-								{subTitle}
-							</Text>
-						</TouchableOpacity>
+								<Text
+									style={{
+										fontWeight: "bold",
+										color: `${
+											purposeSelected?.key == key ? "white" : "#8883f0"
+										}`,
+									}}
+								>
+									{title.toUpperCase()}
+								</Text>
+							</TouchableOpacity>
+						</View>
 					))}
 
 					<TouchableOpacity
@@ -132,7 +116,7 @@ const ActivityCard = () => {
 						}}
 						disabled={selected}
 						onPress={() => {
-							dispatch(setActivityData(activitySelected));
+							dispatch(setPurposeData(purposeSelected));
 							navigation.navigate("PurposeCard");
 						}}
 					>
@@ -168,6 +152,6 @@ const ActivityCard = () => {
 	);
 };
 
-export default ActivityCard;
+export default PurposeCard;
 
 const styles = StyleSheet.create({});

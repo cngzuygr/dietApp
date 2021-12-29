@@ -6,6 +6,7 @@ const initialState = {
 	weightData: null,
 	birthdayData: null,
 	activityData: null,
+	purposeData: null,
 };
 
 export const navSlice = createSlice({
@@ -27,6 +28,9 @@ export const navSlice = createSlice({
 		setActivityData: (state, action) => {
 			state.activityData = action.payload;
 		},
+		setPurposeData: (state, action) => {
+			state.purposeData = action.payload;
+		},
 	},
 });
 
@@ -36,6 +40,7 @@ export const {
 	setWeightData,
 	setBirthdayData,
 	setActivityData,
+	setPurposeData,
 } = navSlice.actions;
 
 //Selectors
@@ -44,5 +49,6 @@ export const selectHeightData = (state) => state.nav.heightData;
 export const selectWeightData = (state) => state.nav.weightData;
 export const selectBirthdayData = (state) => state.nav.birthdayData;
 export const selectActivityData = (state) => state.nav.activityData;
+export const selectPurposeData = (state) => state.nav.purposeData;
 
 export default navSlice.reducer;

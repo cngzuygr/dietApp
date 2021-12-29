@@ -6,6 +6,7 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	View,
+	TextInput,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -84,6 +85,15 @@ const HomeScreen = () => {
 						</View>
 					</View>
 				</TouchableOpacity>
+				<TextInput
+					style={{
+						width: "80%",
+						height: 50,
+						alignSelf: "center",
+						marginTop: 20,
+					}}
+					placeholder="Search"
+				/>
 			</View>
 			<StatusBar />
 		</SafeAreaView>
